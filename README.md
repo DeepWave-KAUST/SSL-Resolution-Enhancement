@@ -70,7 +70,8 @@ sh run_test.sh
 **Disclaimer:** All experiments have been carried on a Intel(R) Xeon(R) CPU @ 2.10GHz equipped with a single NVIDIA GEForce A100 GPU. Different environment 
 configurations may be required for different combinations of workstation and GPU. Due to the high memory consumption during the training phase, if your graphics card does not support large batch training, please reduce the configuration value of args (`batch_size`) in config file `config.yaml`.
 
-## Cite us 
+## Cite us
+```bibtex
 @ARTICLE{cheng2024sslresolution,
   author={Cheng, Shijun and Zhang, Haoran and Alkhalifah, Tariq},
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
