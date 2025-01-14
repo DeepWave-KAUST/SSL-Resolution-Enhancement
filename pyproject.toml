@@ -3,14 +3,14 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "project-name-here"
+name = "ssl_resolution"
 authors = [
-    {name = "Full Name", email = "first.lastname@kaust.edu.sa"},
+    {name = "Shijun Cheng", email = "shijun.cheng@kaust.edu.sa"},
 ]
-description = "Short description here"
+description = "This research develops a self-supervised framework for neural network-based resolution enhancement"
 readme = "README.md"
 requires-python = ">=3.8"
-keywords = ["inverse problems", "seismic"]
+keywords = ["self-supervised-learning", "seismic-processing"]
 license = {text = "BSD 3-Clause License"}
 classifiers = [
         "Intended Audience :: Science/Research",
