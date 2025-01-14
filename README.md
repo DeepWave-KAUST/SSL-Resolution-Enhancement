@@ -2,8 +2,6 @@
 
 Reproducible material for **Self-supervised Seismic Resolution Enhancement - Shijun Cheng, Haoran Zhang, and Tariq Alkhalifah.**
 
-[Click here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/REPORTS/DW0049?csf=1&web=1&e=8j0vgx) to access the Project Report. Authentication to the _Restricted Area_ filespace is required.
-
 # Project structure
 This repository is organized as follows:
 
@@ -73,5 +71,14 @@ sh run_test.sh
 configurations may be required for different combinations of workstation and GPU. Due to the high memory consumption during the training phase, if your graphics card does not support large batch training, please reduce the configuration value of args (`batch_size`) in config file `config.yaml`.
 
 ## Cite us 
-DW0049 - Cheng et al. (2024) Self-supervised Seismic Resolution Enhancement.
+@ARTICLE{cheng2024sslresolution,
+  author={Cheng, Shijun and Zhang, Haoran and Alkhalifah, Tariq},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={Self-supervised Seismic Resolution Enhancement}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-15},
+  doi={10.1109/TGRS.2025.3528414}}
+
 
