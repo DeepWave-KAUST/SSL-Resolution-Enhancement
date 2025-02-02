@@ -77,7 +77,7 @@ configurations may be required for different combinations of workstation and GPU
   journal={IEEE Transactions on Geoscience and Remote Sensing}, 
   title={Self-supervised Seismic Resolution Enhancement}, 
   year={2025},
-  volume={},
+  volume={63},
   number={},
   pages={1-15},
   doi={10.1109/TGRS.2025.3528414}}
