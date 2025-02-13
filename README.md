@@ -13,11 +13,8 @@ This repository is organized as follows:
 ## Supplementary files
 To ensure reproducibility, we provide the the data set for training and testing, and the trained model for validate the low-frequency extrapolation performance. 
 
-* **Training data set**
-Download the training data set [here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/DW0027/dataset/train?csf=1&web=1&e=BWxDFb). Then, use `unzip` to extract the contents to `dataset/train`.
-
-* **Testing data set**
-Download the testing data set [here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/DW0027/dataset/test?csf=1&web=1&e=bOl78N). Then, use `unzip` to extract the contents to `dataset/test`.
+* **Training and Testing data set**
+Download the training and testing data set [here](https://drive.google.com/file/d/17QtAFV4HBDtq2dc6bOY91yvGtt3fDbsk/view?usp=sharing). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
 
 * **Trained model**
 Download the trained neural network model [here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/DW0027?csf=1&web=1&e=MRsEhA). Then, extract the contents to `trained_checkpoints/`.
