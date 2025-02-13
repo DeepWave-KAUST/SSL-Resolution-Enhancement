@@ -16,9 +16,6 @@ To ensure reproducibility, we provide the the data set for training and testing,
 * **Training and Testing data set**
 Download the training and testing data set [here](https://drive.google.com/file/d/17QtAFV4HBDtq2dc6bOY91yvGtt3fDbsk/view?usp=sharing). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
 
-* **Trained model**
-Download the trained neural network model [here](https://kaust.sharepoint.com/:f:/r/sites/M365_Deepwave_Documents/Shared%20Documents/Restricted%20Area/DW0027?csf=1&web=1&e=MRsEhA). Then, extract the contents to `trained_checkpoints/`.
-
 ## Getting started :space_invader: :robot:
 To ensure reproducibility of the results, we suggest using the `environment.yml` file when creating an environment.
 
@@ -60,7 +57,6 @@ For testing, you can directly run:
 ```
 sh run_test.sh
 ```
-**Note:** Here, we have provided a trained model in supplementary file, you can directly load trained model to perform testing.
 
 **Note:** We emphasize that the training logs is saved in the `runs/` file folder. You can use the `tensorboard --logdir=./` or extract the log to view the changes of the metrics as a function of epoch.
 
