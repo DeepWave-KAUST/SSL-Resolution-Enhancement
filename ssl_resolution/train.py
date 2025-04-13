@@ -13,9 +13,11 @@ import time
 
 def main(args):
 
-    torch.manual_seed(222)
-    torch.cuda.manual_seed_all(222)
-    np.random.seed(222)
+    torch.manual_seed(71755290)
+    torch.cuda.manual_seed_all(71755290)
+    np.random.seed(1e8)
+    torch.backends.cudnn.benchmark = False
+    torch.backends.cudnn.deterministic = True
 
     dataset = Basicdataset(args.dir_train)
 
