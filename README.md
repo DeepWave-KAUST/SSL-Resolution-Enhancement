@@ -16,6 +16,9 @@ To ensure reproducibility, we provide the the data set for training and testing,
 * **Training and Testing data set**
 Download the training and testing data set [here](https://drive.google.com/file/d/17QtAFV4HBDtq2dc6bOY91yvGtt3fDbsk/view?usp=sharing). Then, use `unzip` to extract the contents to `dataset/train` and `dataset/test`.
 
+* **Trained model:**
+Download our trained model [here](https://drive.google.com/file/d/1tJd4N7XBtmM2UzceSJegHCAxxlnRQQyw/view?usp=sharing). Then, extract the contents.
+
 ## Getting started :space_invader: :robot:
 To ensure reproducibility of the results, we suggest using the `environment.yml` file when creating an environment.
 
