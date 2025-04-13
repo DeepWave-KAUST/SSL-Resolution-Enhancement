@@ -7,69 +7,53 @@ class UNet(nn.Module):
         super(UNet, self).__init__()
 
         self.en_block1 = nn.Sequential(
-            nn.Conv2d(in_channels, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(in_channels, 48),
+            Basicblock(48, 48),
             nn.MaxPool2d(2))
 
         self.en_block2 = nn.Sequential(
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(48, 48),
             nn.MaxPool2d(2))
 
         self.en_block3 = nn.Sequential(
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(48, 48),
             nn.MaxPool2d(2))
 
         self.en_block4 = nn.Sequential(
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(48, 48),
             nn.MaxPool2d(2))
 
         self.en_block5 = nn.Sequential(
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(48, 48),
             nn.MaxPool2d(2),
-            nn.Conv2d(48, 48, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(48, 48),
             nn.Upsample(scale_factor=2, mode='nearest'))
 
         self.de_block1 = nn.Sequential(
-            nn.Conv2d(96, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(96, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(96, 96),
+            Basicblock(96, 96),
             nn.Upsample(scale_factor=2, mode='nearest'))
 
         self.de_block2 = nn.Sequential(
-            nn.Conv2d(144, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(96, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(144, 96),
+            Basicblock(96, 96),
             nn.Upsample(scale_factor=2, mode='nearest'))
 
         self.de_block3 = nn.Sequential(
-            nn.Conv2d(144, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(96, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(144, 96),
+            Basicblock(96, 96),
             nn.Upsample(scale_factor=2, mode='nearest'))
 
         self.de_block4 = nn.Sequential(
-            nn.Conv2d(144, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(96, 96, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
+            Basicblock(144, 96),
+            Basicblock(96, 96),
             nn.Upsample(scale_factor=2, mode='nearest'))
 
         self.de_block5 = nn.Sequential(
-            nn.Conv2d(96 + in_channels, 64, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(64, 32, 3, padding=1, bias=True),
-            nn.LeakyReLU(inplace=True, negative_slope=0.1),
-            nn.Conv2d(32, out_channels, 3, padding=1, bias=True))
+            Basicblock(96 + in_channels, 64),
+            Basicblock(64, 32))
+
+        self.out = nn.Conv2d(32, out_channels, 3, padding=1, bias=True)
 
         self.padder_size = 2 ** 5
 
@@ -93,6 +77,7 @@ class UNet(nn.Module):
         upsample1 = self.de_block4(concat2)
         concat1 = torch.cat((upsample1, x), dim=1)
         out = self.de_block5(concat1)
+        out = self.out(out)
 
         return out[:, :, :H, :W]
 
@@ -102,3 +87,18 @@ class UNet(nn.Module):
         mod_pad_w = (self.padder_size - w % self.padder_size) % self.padder_size
         x = F.pad(x, (0, mod_pad_w, 0, mod_pad_h), mode='replicate')
         return x
+
+class Basicblock(nn.Module):
+    def __init__(self, in_channels, out_channels, ks=3, stride=1, padding=1):
+        super().__init__()
+        self.ks = ks
+        self.stride = stride
+        self.padding = padding
+
+        self.block = nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, kernel_size=self.ks, padding=self.padding),
+            nn.LeakyReLU(inplace=True, negative_slope=0.1)
+        )
+
+    def forward(self, x):
+        return self.block(x)
