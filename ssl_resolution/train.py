@@ -15,7 +15,7 @@ def main(args):
 
     torch.manual_seed(71755290)
     torch.cuda.manual_seed_all(71755290)
-    np.random.seed(1e8)
+    np.random.seed(10000000)
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
 
